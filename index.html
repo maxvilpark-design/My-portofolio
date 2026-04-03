@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portofolio | Shofi Muhamad Latif</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Library untuk Animasi Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
@@ -14,6 +16,7 @@
             background-color: #1a0b2e;
             color: white;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         .gradient-main {
@@ -24,6 +27,13 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.3);
         }
 
         .floating {
@@ -45,35 +55,44 @@
         .btn-yellow {
             background-color: #facc15;
             color: #1a0b2e;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-yellow:hover {
+            transform: scale(1.05);
+            background-color: #eab308;
+            box-shadow: 0 20px 25px -5px rgba(234, 179, 8, 0.3);
         }
         
         .card-pink {
             background: linear-gradient(135deg, #d946ef 0%, #7c3aed 100%);
         }
 
-        .badge-tech {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a0b2e; }
+        ::-webkit-scrollbar-thumb { background: #4c1d95; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
+
+        /* Menghilangkan scrollbar horizontal saat animasi berjalan */
+        [data-aos] { pointer-events: none; }
+        .aos-animate { pointer-events: auto; }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
     <!-- Header / Nav -->
-    <nav class="fixed w-full z-50 px-6 py-6">
+    <nav class="fixed w-full z-50 px-6 py-6 transition-all duration-500" id="navbar">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-extrabold tracking-tighter">SML<span class="text-yellow-400">.</span></div>
             <div class="hidden md:flex space-x-10 text-sm font-semibold opacity-80">
-                <a href="#home" class="hover:opacity-100 transition">Tentang</a>
-                <a href="#experience" class="hover:opacity-100 transition">Pengalaman</a>
-                <a href="#skills" class="hover:opacity-100 transition">Keahlian</a>
+                <a href="#home" class="hover:text-yellow-400 transition">Tentang</a>
+                <a href="#experience" class="hover:text-yellow-400 transition">Pengalaman</a>
+                <a href="#skills" class="hover:text-yellow-400 transition">Keahlian</a>
             </div>
-            <button class="bg-white/10 hover:bg-white/20 p-2 px-4 rounded-full transition">
-                <i class="fas fa-bars"></i>
-            </button>
+            <a href="#contact" class="bg-white/10 hover:bg-white/20 px-6 py-2 rounded-full transition border border-white/10 text-sm font-bold">
+                Hubungi
+            </a>
         </div>
     </nav>
 
@@ -83,7 +102,7 @@
         <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-600/10 rounded-full blur-[100px]"></div>
 
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
-            <div class="space-y-8 order-2 lg:order-1 text-center lg:text-left">
+            <div class="space-y-8 order-2 lg:order-1 text-center lg:text-left" data-aos="fade-right">
                 <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
                     Segala hal yang Anda <br>
                     <span class="accent-gradient">butuhkan</span> untuk <br>
@@ -93,15 +112,15 @@
                     Lulusan TKJ yang ahli dalam pengoperasian mesin cetak digital skala industri dan manajemen lapangan. Menjamin kualitas produksi terbaik dengan presisi tinggi.
                 </p>
                 <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                    <a href="#contact" class="btn-yellow px-10 py-4 rounded-2xl font-bold text-lg hover:scale-105 transition shadow-xl shadow-yellow-500/20">
-                        HUBUNGI SAYA
+                    <a href="#contact" class="btn-yellow px-10 py-4 rounded-2xl font-bold text-lg shadow-xl shadow-yellow-500/20">
+                        MULAI SEKARANG
                     </a>
                 </div>
             </div>
 
-            <div class="relative order-1 lg:order-2 flex justify-center items-center py-10">
+            <div class="relative order-1 lg:order-2 flex justify-center items-center py-10" data-aos="zoom-in">
                 <div class="relative z-10 w-64 h-80 md:w-80 md:h-[450px] bg-slate-800 rounded-[3rem] overflow-hidden border-4 border-white/10 shadow-2xl">
-                    <img src="1000208240.jpg" alt="Shofi Muhamad Latif" class="w-full h-full object-cover grayscale-[10%] contrast-110">
+                    <img src="1000208240.jpg" alt="Shofi Muhamad Latif" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Floating Elements -->
@@ -123,7 +142,7 @@
                             <i class="fas fa-check-circle"></i>
                         </div>
                         <div>
-                            <p class="text-xs opacity-80">Total Pengalaman</p>
+                            <p class="text-xs opacity-80">Pengalaman</p>
                             <p class="text-xl font-bold">3+ Tahun</p>
                         </div>
                     </div>
@@ -133,16 +152,16 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-24 px-6">
+    <section id="experience" class="py-24 px-6 bg-[#160a26]">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-16">
+            <div class="mb-16 text-center lg:text-left" data-aos="fade-up">
                 <p class="text-yellow-400 font-bold tracking-widest text-sm uppercase mb-2">Riwayat Pekerjaan</p>
                 <h2 class="text-4xl md:text-5xl font-extrabold">Pengalaman Profesional.</h2>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- NEW Job: Digital Printing -->
-                <div class="glass-card p-8 rounded-[2.5rem] border-t-4 border-yellow-400 group transition hover:translate-y-[-10px]">
+                <!-- Job: Printing -->
+                <div class="glass-card p-8 rounded-[2.5rem] border-t-4 border-yellow-400" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex justify-between items-start mb-6">
                         <div class="bg-yellow-400/20 p-4 rounded-2xl">
                             <i class="fas fa-print text-2xl text-yellow-400"></i>
@@ -150,85 +169,78 @@
                         <span class="text-sm opacity-40 font-bold">2025 — 2026</span>
                     </div>
                     <h3 class="text-xl font-bold mb-1">Operator Produksi</h3>
-                    <p class="text-yellow-400 font-bold text-sm mb-4 tracking-wide uppercase">Kingtech Digital Printing - Genteng</p>
-                    <div class="space-y-4 text-sm opacity-70 leading-relaxed">
-                        <p>Bertanggung jawab penuh atas alur produksi cetak digital menggunakan berbagai teknologi mesin canggih:</p>
-                        <ul class="space-y-2">
-                            <li><i class="fas fa-cog mr-2 text-yellow-400"></i> <strong>Cetak Digital:</strong> Mengoperasikan mesin Outdoor, Indoor, Fuji Xerox C60, Xerox Apeosport V, serta printer foto Epson D300 & D700 dan Riso SF 5230.</li>
-                            <li><i class="fas fa-cut mr-2 text-yellow-400"></i> <strong>Finishing Presisi:</strong> Ahli mengoperasikan mesin cutting Rhinotec RC 60 XA & RC 32 ASC.</li>
-                            <li><i class="fas fa-layer-group mr-2 text-yellow-400"></i> <strong>Quality Control:</strong> Memastikan hasil akhir melalui proses laminasi yang sempurna.</li>
-                        </ul>
-                    </div>
+                    <p class="text-yellow-400 font-bold text-sm mb-4 tracking-wide">KINGTECH DIGITAL PRINTING</p>
+                    <ul class="space-y-2 text-sm opacity-60 leading-relaxed">
+                        <li><i class="fas fa-check mr-2 text-yellow-400"></i> Operator Fuji Xerox & Epson.</li>
+                        <li><i class="fas fa-check mr-2 text-yellow-400"></i> Cutting Rhinotec Series.</li>
+                        <li><i class="fas fa-check mr-2 text-yellow-400"></i> Quality Control & Laminasi.</li>
+                    </ul>
                 </div>
 
                 <!-- Job: Agriculture -->
-                <div class="glass-card p-8 rounded-[2.5rem] group transition hover:translate-y-[-10px]">
+                <div class="glass-card p-8 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex justify-between items-start mb-6">
                         <div class="bg-purple-600/30 p-4 rounded-2xl">
                             <i class="fas fa-leaf text-2xl text-purple-400"></i>
                         </div>
                         <span class="text-sm opacity-40 font-bold">2022 — 2024</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-1">Petani Cabai & Penjual Pupuk</h3>
-                    <p class="text-purple-400 font-bold text-sm mb-4 tracking-wide">MANDIRI - BANYUWANGI</p>
-                    <p class="opacity-60 text-sm">
-                        Manajemen perawatan tanaman dari bibit hingga panen, pengendalian hama, serta pemasaran produk pupuk organik ke masyarakat lokal.
-                    </p>
+                    <h3 class="text-xl font-bold mb-1">Petani Cabai</h3>
+                    <p class="text-purple-400 font-bold text-sm mb-4 tracking-wide uppercase">Mandiri - Banyuwangi</p>
+                    <p class="opacity-60 text-sm">Manajemen budidaya, perawatan tanaman intensif, dan distribusi pupuk organik mandiri.</p>
                 </div>
 
                 <!-- Job: PKL -->
-                <div class="glass-card p-8 rounded-[2.5rem] group transition hover:translate-y-[-10px]">
+                <div class="glass-card p-8 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex justify-between items-start mb-6">
                         <div class="bg-blue-600/30 p-4 rounded-2xl">
                             <i class="fas fa-tools text-2xl text-blue-400"></i>
                         </div>
                         <span class="text-sm opacity-40 font-bold">2018</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-1">Teknisi Komputer (PKL)</h3>
-                    <p class="text-blue-400 font-bold text-sm mb-4 tracking-wide">BILQIS KOMPUTER</p>
-                    <p class="opacity-60 text-sm">
-                        Melakukan diagnosa dan perbaikan pada perangkat keras komputer serta printer untuk klien perorangan dan instansi.
-                    </p>
+                    <h3 class="text-xl font-bold mb-1">Teknisi Komputer</h3>
+                    <p class="text-blue-400 font-bold text-sm mb-4 tracking-wide uppercase">Bilqis Komputer</p>
+                    <p class="opacity-60 text-sm">Diagnosis kerusakan sistem dan perbaikan perangkat keras komputer serta printer.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24 px-6 bg-[#160a26]">
+    <section id="skills" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Keahlian Teknis</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <p class="text-xs opacity-50 mb-2">PRINTING</p>
-                    <p class="font-bold">Fuji Xerox & Epson</p>
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-down">Keahlian Utama</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass-card p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-print text-3xl text-yellow-400 mb-4 transition-transform group-hover:scale-125"></i>
+                    <p class="font-bold">Digital Printing</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <p class="text-xs opacity-50 mb-2">CUTTING</p>
-                    <p class="font-bold">Rhinotec Series</p>
+                <div class="glass-card p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-cut text-3xl text-pink-400 mb-4 transition-transform group-hover:scale-125"></i>
+                    <p class="font-bold">Cutting Sticker</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <p class="text-xs opacity-50 mb-2">IT SUPPORT</p>
-                    <p class="font-bold">Hardware PC/TKJ</p>
+                <div class="glass-card p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="300">
+                    <i class="fas fa-microchip text-3xl text-purple-400 mb-4 transition-transform group-hover:scale-125"></i>
+                    <p class="font-bold">Hardware IT</p>
                 </div>
-                <div class="glass-card p-6 rounded-2xl text-center">
-                    <p class="text-xs opacity-50 mb-2">MULTIMEDIA</p>
-                    <p class="font-bold">Photo & Video Editing</p>
+                <div class="glass-card p-8 rounded-2xl text-center group" data-aos="zoom-in" data-aos-delay="400">
+                    <i class="fas fa-seedling text-3xl text-emerald-400 mb-4 transition-transform group-hover:scale-125"></i>
+                    <p class="font-bold">Agrikultur</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact CTA -->
-    <section id="contact" class="py-24 px-6 mb-10">
+    <section id="contact" class="py-24 px-6 mb-20" data-aos="fade-up">
         <div class="max-w-7xl mx-auto">
-            <div class="card-pink rounded-[3rem] p-12 text-center relative overflow-hidden">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-8 relative z-10">Siap untuk proyek cetak & teknis?</h2>
+            <div class="card-pink rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+                <h2 class="text-4xl md:text-6xl font-extrabold mb-8 relative z-10">Siap bekerja bersama?</h2>
                 <div class="flex flex-wrap justify-center gap-6 relative z-10">
-                    <a href="mailto:sofimlatif@gmail.com" class="bg-white text-indigo-900 px-10 py-4 rounded-2xl font-bold hover:bg-yellow-400 transition">
+                    <a href="mailto:sofimlatif@gmail.com" class="bg-white text-indigo-900 px-10 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg">
                         Email Saya
                     </a>
-                    <a href="tel:+6285934292513" class="bg-indigo-900/50 text-white border border-white/20 px-10 py-4 rounded-2xl font-bold hover:bg-indigo-900 transition">
+                    <a href="tel:+6285934292513" class="bg-indigo-900/40 text-white border border-white/20 px-10 py-4 rounded-2xl font-bold hover:bg-indigo-900 transition">
                         WhatsApp
                     </a>
                 </div>
@@ -236,10 +248,34 @@
         </div>
     </section>
 
-    <footer class="py-12 px-6 border-t border-white/5 opacity-40 text-center">
-        <p>&copy; 2026 Shofi Muhamad Latif. Operator Produksi & Teknisi.</p>
+    <footer class="py-12 px-6 border-t border-white/5 opacity-40 text-center text-sm">
+        <p>&copy; 2026 Shofi Muhamad Latif. Desain Modern & Berulang.</p>
     </footer>
 
+    <!-- Script Animasi -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inisialisasi AOS dengan mode REPEAT (once: false)
+        AOS.init({
+            once: false, // Animasi berulang setiap kali di-scroll
+            duration: 1000, 
+            easing: 'ease-in-out-back',
+            offset: 120, // Animasi muncul sedikit lebih lambat agar lebih terlihat
+            delay: 100,
+        });
+
+        // Efek Navbar dinamis
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.classList.add('bg-[#1a0b2e]/90', 'backdrop-blur-xl', 'py-4', 'shadow-[0_10px_30px_rgba(0,0,0,0.5)]');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('bg-[#1a0b2e]/90', 'backdrop-blur-xl', 'py-4', 'shadow-[0_10px_30px_rgba(0,0,0,0.5)]');
+                nav.classList.add('py-6');
+            }
+        });
+    </script>
 </body>
 </html>
 
